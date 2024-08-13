@@ -1,5 +1,7 @@
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -7,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class HippodromeTest {
+    List<Horse>empty=new ArrayList<>();
     List<Horse> horses = List.of(
             new Horse("Bucephalus", 2.4),
             new Horse("Ace of Spades", 2.5),
@@ -49,17 +52,50 @@ class HippodromeTest {
 
     Hippodrome hippodrome=new Hippodrome(horses);
 
+
     @Test
-    void getHorses() {
+    void testExpectedExceptionWithNull() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            new Hippodrome(null);
+        });
+    }
+    @Test
+    void whenAssertingExceptionNull() {
+        Throwable exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> { new Hippodrome(null);}
+        );
+        assertEquals("Horses cannot be null.", exception.getMessage());
+    }
+    @Test
+    void testExpectedExceptionWithEmpty() {
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            new Hippodrome(empty);
+        });
+    }
+    @Test
+    void whenAssertingExceptionEmpty() {
+        Throwable exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> { new Hippodrome(empty);}
+        );
+        assertEquals("Horses cannot be empty.", exception.getMessage());
+    }
+
+
+
+    @Test
+    void getHorsesHippodrome() {
         assertThat(horses).isEqualTo( hippodrome.getHorses());
     }
 
     @Test
-    void move() {
+    void moveHippodrome() {
     }
 
     @Test
-    void getWinner() {
+    void getWinnerHippodrome() {
         assertEquals(100, horsesDist.stream()
                 .max(Comparator.comparing(Horse::getDistance))
                 .get().getDistance());
