@@ -1,5 +1,13 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.MockedStatic;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class HorseTest {
@@ -66,8 +74,12 @@ class HorseTest {
         assertEquals(0, horseNullDist.getDistance());
 
     }
-
+    @ExtendWith(MockitoExtension.class)
     @Test
     void moveHorse() {
+        MockedStatic<Horse> mock = Mockito.mockStatic(Horse.class);
+
+
+
     }
 }
