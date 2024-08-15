@@ -9,8 +9,9 @@ import static org.junit.jupiter.api.Assertions.*;
 class MainTest {
     @Disabled
     @Test
-    @Timeout(value = 22, unit = TimeUnit.SECONDS)
-    void failsIfExecutionTimeExceeds22Seconds() {
+    @Timeout(value = 22)
+    void failsIfExecutionTimeExceeds22Seconds() throws Exception {
+        Main.main(null);
 
     }
 
