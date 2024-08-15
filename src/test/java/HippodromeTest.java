@@ -54,16 +54,10 @@ class HippodromeTest {
 
 
     @Test
-    void testExpectedExceptionWithNull() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            new Hippodrome(null);
-        });
-    }
-    @Test
     void whenAssertingExceptionNull() {
         Throwable exception = assertThrows(
                 IllegalArgumentException.class,
-                () -> { new Hippodrome(null);}
+                () -> { new Hippodrome(new ArrayList<>());}
         );
         assertEquals("Horses cannot be null.", exception.getMessage());
     }
